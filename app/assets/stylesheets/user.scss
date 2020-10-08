@@ -1,0 +1,26 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Font Icon
+//@import "css/css/material-design-iconic-font.min.css";
+//@import url("https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css");
+// Main css
+@import "css/style";
+
+//Password STrength
+.short{
+	color:#d9534f;
+}
+.weak{
+	color:#5bc0de;
+}
+.good{
+	color:#428bca;
+}
+.strong{
+	color:#5cb85c;	
+}
+#strength, #msg{
+	font-weight:bold;
+}

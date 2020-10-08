@@ -1,0 +1,16 @@
+
+<ol>
+    <% @users.each do |u| %>
+    <li>
+        <ul>
+            <li><%= "ID: #{u.id}" %></li>
+            <li><%= "Fullname: #{u.fullname}" %></li>
+            <li><%= "Email: #{u.email}" %></li>
+            <li><%= "Password: #{u.password}" %></li>
+            <li><%= "Role: #{u.user_role}" %></li>
+        </ul>
+    </li>
+    <% end %>
+
+    <%= link_to "Sign Up", :action=>"account" %>
+</ol>

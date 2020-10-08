@@ -1,0 +1,42 @@
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <%= form_tag({action:'create'}, {class: 'register-form'}) do %>
+                            <div class="form-group">
+                                <label for="users_fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <%= text_field "users", "fullname", :placeholder=>"Your Fullname" %>
+                            </div>
+                            <div class="form-group">
+                                <label for="users_email"><i class="zmdi zmdi-email"></i></label>
+                                <%= email_field "users", "email", :placeholder=>"Your Email"  %>
+                            </div>
+                            <div class="form-group">
+                                <label for="users_password"><i class="zmdi zmdi-lock"></i></label>
+                                <%= password_field "users", "password", :placeholder=>"Password" %>
+                            </div>
+                            <div class="progress">
+                            <!-- Check password strength -->
+                            <div id="progress" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span id="strength"> </span>
+                            <!---->
+                            <div class="form-group form-button">
+                                <%= submit_tag "Register", :class=>"form-submit users_subit" %>
+                            </div>
+                        <% end -%>
+                    </div>
+                    <div class="signup-image">
+                        <figure><%= image_tag "signup-image.jpg", :alt=>"sing up image" %></figure>
+                        <a href="login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
