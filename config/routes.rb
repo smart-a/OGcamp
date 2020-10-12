@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   post 'user/signin'
   get 'user/dashboard'
   get 'user/logout'
+ 
+  get 'project/new'
+  get 'project', to: 'project#new'
+  post 'project/create'
+  get 'project/show'
+  get 'project/edit'
+  patch 'project/update'
+  get 'project/delete'
 
-
-  get 'user/users', to: 'user#list'
 end

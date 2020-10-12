@@ -1,0 +1,30 @@
+
+    <div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                
+                <div class="signup-form" style="width: 100%;">
+                    <h2 class="form-title">New Project</h2>
+                    <%= form_tag({action:'create'}, {class: 'register-form'}) do %>
+                        <%= hidden_field_tag "users_id", @user['id'] %>
+                        <div class="form-group">
+                            <%= text_field "projects", "title", :placeholder=>"Project Title", :class=>"form-control" %>
+                        </div>
+                        <div class="form-group">
+                            <%= text_area "projects", "description", :class=>"form-control", :rows=>"3", :placeholder=>"Project Description"  %>
+                        </div>
+                        <div class="form-group form-button">
+                            <%= submit_tag "Save", :class=>"form-submit bg-success" %>
+                        </div>
+                        <div class="form-group form-button">
+                            <%= link_to "Back to list", controller: 'user', action: 'dashboard' %>
+                        </div>
+                    <% end -%>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
