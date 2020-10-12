@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_10_06_101111) do
     t.string "title", limit: 50, null: false
     t.text "description"
     t.integer "completion", default: 0
-    t.datetime "created_on"
-    t.datetime "last_update"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

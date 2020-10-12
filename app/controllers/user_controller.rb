@@ -91,6 +91,7 @@ class UserController < ApplicationController
 
     def dashboard
         @user = session['user']
+        @project = Project.all()
     end
 
 end

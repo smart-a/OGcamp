@@ -11,4 +11,12 @@ Rails.application.routes.draw do
   post "user/update"
 
   #get 'user/users', to: 'user#list'
+ 
+  get 'project/new'
+  get 'project', to: 'project#new'
+  post 'project/create'
+  get 'project/show'
+  get 'project/edit'
+  patch 'project/update'
+  get 'project/delete'
 end
