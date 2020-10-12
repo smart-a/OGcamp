@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-    it { should validate_presence_of(:title) }
+    validates_presence_of(:title)
 end
