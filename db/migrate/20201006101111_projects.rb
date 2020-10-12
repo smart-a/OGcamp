@@ -6,8 +6,7 @@ class Projects < ActiveRecord::Migration[6.0]
       t.column :title, :string, :limit => 50, :null =>  false
       t.column :description, :text
       t.column :completion, :integer, :default => 0
-      t.column :created_on, :timestamp
-      t.column :last_update, :timestamps
+      t.timestamps
     end
   end
 

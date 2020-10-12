@@ -23,98 +23,61 @@
     </div>
 </nav>
 <main>
-<div class="container my-5">
+  <div class="container my-5">
     <div class="card-body text-center">
       <h2 class="card-title m-0">Your Project List </h2>
     </div>
     <div class="p-3">
-        <button id="add__new__list" type="button" class="btn btn-success ">
-          Add Project
-        </button>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">SN</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Created On</th>
-                <th scope="col">Status</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr>
-                <th scope="row" id=''><%=  @user['id'] %></th>
-                <td><%=  @user['fullname'] %></td>
-                <td><%=  @user['fullname'] %></td>
+      <a id="add__new__list" type="button" class="btn btn-success" href="../project">
+        Add Project
+      </a>
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">SN</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Created On</th>
+              <th scope="col">Updated On</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% row_num = 1 %>
+            <% @project.each do |p| %>
+              <tr id="<%= p.id %>">
+                <th scope="row"><%= row_num %></th>
+                <td><%= p.title %></td>
+                <td class="desc"><%= p.description %></td>
+                <td><%= Date.parse(p.created_at.to_s, "%d-%M-%Y") %></td>
+                <td><%= Date.parse(p.updated_at.to_s, "%d-%M-%Y") %></td>
+                <td><%= (p.completion==0) ? 'In-progress' : 'Completed' %></td>
                 <td>
-                        
-                </td>
-                <td>
-                
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-info" title="View" href="#">
+                    <a class="btn btn-sm btn-info" title="View" href="../project/show?id=<%= p.id %>">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                         <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                       </svg>
                     </a> 
-                    <a class="btn btn-sm btn-primary" title="Edit" href="#">
+                    <a class="btn btn-sm btn-primary" title="Edit" href="../project/edit?id=<%= p.id %>">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pen-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
                       </svg>
                     </a>
-                    <a class="btn btn-sm btn-danger" title="Delete" href="#">
+                    <a class="btn btn-sm btn-danger" title="Delete" href="../project/delete?id=<%= p.id %>">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-octagon-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
                       </svg>
                     </a>
                 </td>
               </tr>
-              
-            </tbody>
-          </table>
+              <% row_num += 1 %>
+            <% end %>
+          </tbody>
+        </table>
     </div>
     <!-- Large modal -->
-
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-          <div class="card-body text-center">
-            <h4 class="card-title">Special title treatment</h4>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-            <div class=" card col-8 offset-2 my-2 p-3">
-          <form>
-            <div class="form-group">
-              <label for="listname">List name</label>
-              <input type="text" class="form-control" name="listname" id="listname" placeholder="Enter your listname">
-            </div>
-            <div class="form-group">
-              <label for="datepicker">Deadline</label>
-              <input  type="text" class="form-control" name="datepicker" id="datepicker" placeholder="Pick up a date">
-            </div>
-            <div class="form-group">
-                                    <label for="datepicker">Add a list item</label>
-                <div class="input-group">
-
-                  <input type="text" class="form-control" placeholder="Add an item" aria-label="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">Go!</button>
-                  </span>
-                </div>
-              </div>
-           <div class="form-group text-center">
-             <button type="submit" class="btn btn-block btn-primary">Sign in</button>
-          </div>
-        </form>
-    </div>
-    </div>
   </div>
-</div>
-</div>
 </main>
 <!---->
