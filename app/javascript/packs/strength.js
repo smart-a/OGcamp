@@ -1,12 +1,15 @@
 $(function(){
 	//alert("Strength");
-
+	
+	$('.users_submit').attr('disabled','disabled');
+	$('.users_submit').addClass('disabled');
 	$('#users_password').keyup(function(){
 		var password = $('#users_password').val();
 		if(password == ''){
 			$('#progress').removeClass().addClass('progress-bar');
 			$('#strength').html('');
-			$('#user_submit').attr('disabled','disabled');
+			$('.users_submit').attr('disabled','disabled');
+			$('.users_submit').addClass('disabled');
 		}
 		else{
 			var meter = checkStrength(password);
@@ -34,10 +37,15 @@ function checkStrength(password){
 	if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
 	
 	//Enable button if strength is greater or equal 2
-	if (strength < 2) 
-		$('#users_subit').attr('disabled','disabled');
-	else
-		$('#users_subit').removeAttr('disabled');
+	if (strength < 2){
+		$('.users_submit').attr('disabled','disabled');
+		$('.users_submit').addClass('disabled');
+	}
+	else{
+		$('.users_submit').removeAttr('disabled');
+		$('.users_submit').removeClass('disabled');
+	}
+		
 
 	// Calculated strength value, we can return messages
 	// If value is less than 2

@@ -8,12 +8,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="index.html">Profile</a>
+          <a class="nav-item nav-link" href="profile?id=<%= @user['id'] %>">My Profile</a>
          
          <!-- If user is an admin -->
           <% if @user['user_role'] == 'admin' %>
-            <a class="nav-item nav-link" href="#">Add User</a>
-            <a class="nav-item nav-link" href="#">Role Permission</a>
+            <a class="nav-item nav-link" href="">Admin Panel</a>
           <% end %>
         
         </div>

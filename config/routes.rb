@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'user/signin'
   get 'user/dashboard'
   get 'user/logout'
+  get 'user/profile'
+  post "user/update"
+
+  #get 'user/users', to: 'user#list'
  
   get 'project/new'
   get 'project', to: 'project#new'
@@ -15,5 +19,4 @@ Rails.application.routes.draw do
   get 'project/edit'
   patch 'project/update'
   get 'project/delete'
-
 end

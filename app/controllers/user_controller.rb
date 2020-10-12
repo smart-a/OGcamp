@@ -27,8 +27,22 @@ class UserController < ApplicationController
         @users = User.all()
     end
 
-    def show
-        @user = User.find(params[:id])
+    def profile
+        @users = User.find(params[:id])
+    end
+
+    
+    def update_params
+        params.require(:users).permit(:fullname, :email, :password)
+    end
+
+    def update
+        @users = User.find(params[:id])
+        if @users.update(update_params)
+            redirect_to action: 'profile', notice: "1", id: @users
+        else
+            redirect_to action: 'profile', notice: "0", id: @users
+        end
     end
 
     def destroy 
@@ -49,7 +63,6 @@ class UserController < ApplicationController
     end
 
     def signin
-        @rs = ''
         session['page'] = nil
         email = login_params['email']
         password = login_params['password']
